@@ -2174,7 +2174,7 @@
                                             'owner_id': null,
                                             'owner_widget': {
                                                 'ban_info': {
-                                                    'banned': null,
+                                                    'deleted': null,
                                                     'frozen': null,
                                                     'blocked': null
                                                 }
@@ -2184,12 +2184,12 @@
                                         if (json.owner_widget.ban_info && json.owner_id && sContent) {
                                             var blckg = false;
                                             var uid = json.owner_id;
-                                            if (json.owner_widget.ban_info.blocked) {
-                                                main.console.info("[S+] Аккаунт заблокирован!");
-                                            } else if (json.owner_widget.ban_info.banned) {
-                                                main.console.info("[S+] Аккаунт забанен!");
-                                            } else if (json.owner_widget.ban_info.frozen) {
+                                            if (json.owner_widget.ban_info.deleted) {
                                                 main.console.info("[S+] Аккаунт удален!");
+                                            } else if (json.owner_widget.ban_info.frozen) {
+                                                main.console.info("[S+] Аккаунт покинут!");
+                                            } else if (json.owner_widget.ban_info.blocked) {
+                                                main.console.info("[S+] Аккаунт забанен!");
                                                 blckg = true;
                                             }
                                             var tBlock = btools || main.ce("div", {
