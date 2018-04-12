@@ -767,8 +767,8 @@
                         target.innerHTML = "";
                         if (!_SETTINGS.hideNotyf.isOnline) {
                             var hideNotyf = main.ce("span", {
-                                class: "ico pointer right",
-                                style: "background-position:-378px -198px; margin: 10px;",
+                                class: "ico sp_plus_close pointer right",
+                                style: "background-position:-378px -306px; margin: 10px;",
                                 title: "Понятно, больше не показывать.",
                                 onclick: function(e) {
                                     _SETTINGS.hideNotyf.isOnline = true;
@@ -780,7 +780,7 @@
                             var smallInfo = main.ce("div", {
                                 class: "stnd-block-yellow",
                                 style: "padding: 15px;",
-                                html: 'Вы можете добавить здесь аккаунты, о онлайне которых нужно оповещать, а также частоту проверки.<br /><span class="ico" style="background-position: -108px -364px;"></span><b style="color: #F00;">Внимание!</b> <b>Функция потребляет трафик в фоновом режиме!</b>'
+                                html: 'Вы можете добавить здесь аккаунты, о онлайне которых нужно оповещать, а также частоту проверки.<br /><span class="ico" style="background-position:-216px -364px;"></span><b style="color: #F00;">Внимание!</b> <b>Функция потребляет трафик в фоновом режиме!</b>'
                             });
                             var infoDiv = main.ce("div", {
                                 class: "none"
@@ -1264,7 +1264,7 @@
                         if (!_SETTINGS.hideNotyf.cookieEditor) {
                             var hideNotyf = main.ce("span", {
                                 class: "ico pointer right",
-                                style: "background-position:-378px -198px; margin: 10px;",
+                                style: "background-position: -378px -306px; margin: 10px;",
                                 title: "Понятно, больше не показывать.",
                                 onclick: function(e) {
                                     _SETTINGS.hideNotyf.cookieEditor = true;
@@ -1276,7 +1276,7 @@
                             var smallInfo = main.ce("div", {
                                 class: "stnd-block-yellow",
                                 style: "padding: 15px;",
-                                html: '<span class="ico" style="background-position: -108px -364px;"></span>Никому не сообщайте значения ваших cookies! Не делайте скриншот этой страницы, на котором будут видны эти значения! От этого зависит безопасность вашего аккаунта!'
+                                html: '<span class="ico" style="background-position:-216px -364px;"></span>Никому не сообщайте значения ваших cookies! Не делайте скриншот этой страницы, на котором будут видны эти значения! От этого зависит безопасность вашего аккаунта!'
                             });
                             var infoDiv = main.ce("div", {
                                 class: "none"
