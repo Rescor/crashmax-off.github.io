@@ -52,8 +52,10 @@
             'favorite': true,
             'blocked': false,
             'rscroll': false,
+            'hrightbar': false,
             'playerdn': true,
             'coins': true,
+            'fileTools': true,
             'gifts': false,
             'online': true,
             'myEvents': true,
@@ -85,13 +87,14 @@
             'comments': "Пакетное удаление комментариев",
             'blogsd': "Пакетное удаление блогов",
             'readersd': "Пакетное удаление читателей",
-            'fileTools': "Дополнительные кнопки в фото/файлах/блогах",
+            'fileTools': "Дополнительные кнопки в блогах",
             'friendsOn': "Панель друзей онлайн",
             'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/sn/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico\" style=\"background-position: -234px -144px;\"></span></a>",
             'online': "Точное время онлайн в анкетах",
             'favorite': "Возможность добавить пользователя в закладки",
             'playerdn': "Кнопка загрузки трека из плеера",
             'rscroll': "Скроллер страницы справа",
+            'hrightbar': "Скрыть правое меню",
             'blocked': "Открытые разделы удаленных пользователей",
             'coins': "Собирать бонусные монеты",
             'bodystyle': "Задать фон сайта",
@@ -204,15 +207,10 @@
             },
             readSettings: function() {
                 var cookieSet = main.getCookie("SP_PLUS_SET");
-                var cookieOnl = main.getCookie("SP_PLUS_ONLINE");
                 try {
                     if (cookieSet) {
                         cookieSet = JSON.parse(cookieSet);
                         _SETTINGS = main.extend(_SETTINGS, cookieSet);
-                    }
-                    if (cookieOnl) {
-                        cookieOnl = JSON.parse(cookieOnl);
-                        ONLINE = main.extend(ONLINE, cookieOnl);
                     }
                 } catch (e) {
                     main.console.error('Ошибка (READSETTINGS): ' + e.name + ":" + e.message + "\n" + e.stack);
@@ -272,7 +270,7 @@
                                     } else if (prnt.className == "main") {
                                         prnt.innerHTML = prnt.firstElementChild.outerHTML.replace("Настройки", 'Настройки <span style="color: #0000FF;">Spaces+</span>') + '<div class="start_page_padd light_blue_bg"><b id="SP_PLUS_SETHEAD">Настройки <span style="color: #0000FF;">Spaces+ ' + rVer + '</span></b></div><div id="SP_PLUS_SETAREA"></div><a id="SP_PLUS_SETBACK" href="http://spaces.ru/settings/?" class="link-return full_link"><span class="ico ico_arrow-back"></span><span class="m">Назад</span></a>';
                                     } else {
-                                        main.alertm('<h4>Настройки <span>Spaces+ <sup>' + rVer + '</sup></span></h4><div id="SP_PLUS_SETAREA" style="text-align:left!important;line-height:1.5;display:block;height:100%;"></div>', 1, 1);
+                                        main.alertmenu('<h4>Настройки <span>Spaces+ <sup>' + rVer + '</sup></span></h4><div id="SP_PLUS_SETAREA" style="text-align:left!important;line-height:1.5;display:block;height:100%;"></div>', 1, 1);
                                     }
                                     var setArea = main.qs("#SP_PLUS_SETAREA");
                                     if (setArea) {
@@ -391,6 +389,8 @@
                                                         main.setCookie("SP_PLUS_SET", jsonSet, null);
                                                         if (e.target.id == "sp_set_rscroll") {
                                                             main.scrollMove(e.target.checked);
+                                                        } else if (e.target.id == "sp_set_hrightbar") {
+                                                            main.hiddenRightbar(e.target.checked);
                                                         } else if (e.target.id == "sp_set_debug") {
                                                             if (e.target.checked) {
                                                                 main.console.debug("[S+] Запустили консоль!");
@@ -766,9 +766,10 @@
                     try {
                         target.innerHTML = "";
                         if (!_SETTINGS.hideNotyf.isOnline) {
-                            var hideNotyf = main.ce("span", {
-                                class: "ico sp_plus_close pointer right",
-                                style: "background-position:-378px -306px; margin: 10px;",
+                            var hideNotyf = main.ce("img", {
+                                class: "p16 m pointer right",
+                                style: "padding: 10px;",
+                                src: _PROTOCOL + "//spac.me/i/remove.png",
                                 title: "Понятно, больше не показывать.",
                                 onclick: function(e) {
                                     _SETTINGS.hideNotyf.isOnline = true;
@@ -780,7 +781,7 @@
                             var smallInfo = main.ce("div", {
                                 class: "stnd-block-yellow",
                                 style: "padding: 15px;",
-                                html: 'Вы можете добавить здесь аккаунты, о онлайне которых нужно оповещать, а также частоту проверки.<br /><span class="ico" style="background-position:-216px -364px;"></span><b style="color: #F00;">Внимание!</b> <b>Функция потребляет трафик в фоновом режиме!</b>'
+                                html: 'Вы можете добавить здесь аккаунты, о онлайне которых нужно оповещать, а также частоту проверки.<br /><span class="ico ico_alert"></span><b style="color: #F00;">Внимание!</b> <b>Функция потребляет трафик в фоновом режиме!</b>'
                             });
                             var infoDiv = main.ce("div", {
                                 class: "none"
@@ -1094,7 +1095,6 @@
                     });
                     eventsUrl.onchange = eventsUrl.oninput = function(e) {
                         if ((main.isValidUrl(e.target.value) && /\.(ogg|mp3)$/i.test(e.target.value)) || main.trim(e.target.value) == "") {
-                            e.target.style.backgroundColor = "";
                             _SETTINGS.events.url = main.trim(e.target.value);
                             var jsonSet = JSON.stringify(_SETTINGS);
                             main.setCookie("SP_PLUS_SET", jsonSet, null);
@@ -1104,7 +1104,7 @@
                     };
                     var testPlay = main.ce("a", {
                         href: "#",
-                        html: "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAA/klEQVQ4jd3UzypEURwH8M9cZsaGpZJoyBNIiieQrYWivADvYCwshIw3sLRQViSr2SqykL3l2PqzFIt71O10rzG3Wc2vzuZb53P+/ToMSjUK8kpZ7CUnT3CD9TLYd5TXMIYmPjDbKxaDLdxiCHe4iCe30I5GJ4P9gjUsYybsbAsr+MJ0FmxHk/MGbARoEgd4lN5lBztlwAqesIf5kI/jEmdlQDjCNeohX8Kp9E5Lgce4wkg/wATP2MVCP468iTdM4BAPYZFXbGfB/7ZNFYuYw2dYYFXaNlO6VENxY59IH2YY9zjvhuWh2apiFPt4V/x5/InGlUhfe60XLIsOSP0A9294Kp+7cD4AAAAASUVORK5CYII='>",
+                        html: '<span class="ico ico_play"></span>',
                         style: "margin-left: 7px; font-size: small",
                         title: "Прослушать",
                         onclick: function(e) {
@@ -1254,6 +1254,20 @@
                     main.console.error('Ошибка (SCROLLER): ' + e.name + ":" + e.message + "\n" + e.stack);
                 }
             },
+            hiddenRightbar: function(t) {
+                try {
+                    var rightbar = main.qs("#page_rightbar");
+                    if (rightbar && !rightbar.hasAttribute("sp-hidden-rightbar") && t) {
+                        rightbar.style.display = "none";
+                        rightbar.setAttribute("sp-hidden-rightbar", "1");
+                    } else if (!_SETTINGS.hrightbar && rightbar && rightbar.hasAttribute("sp-hidden-rightbar") && !t) {
+                        rightbar.style.display = "block";
+                        rightbar.removeAttribute("sp-hidden-rightbar");
+                    }
+                } catch (e) {
+                    main.console.error('Ошибка (HRIGHTBAT): ' + e.name + ":" + e.message + "\n" + e.stack);
+                }
+            },
             cookieEditor: function(id) {
                 window.scrollTo(0, 0);
                 var cookie = main.allCookie();
@@ -1262,9 +1276,10 @@
                     try {
                         target.innerHTML = "";
                         if (!_SETTINGS.hideNotyf.cookieEditor) {
-                            var hideNotyf = main.ce("span", {
-                                class: "ico pointer right",
-                                style: "background-position: -378px -306px; margin: 10px;",
+                            var hideNotyf = main.ce("img", {
+                                class: "p16 m pointer right",
+                                style: "padding: 10px;",
+                                src: _PROTOCOL + "//spac.me/i/remove.png",
                                 title: "Понятно, больше не показывать.",
                                 onclick: function(e) {
                                     _SETTINGS.hideNotyf.cookieEditor = true;
@@ -1276,7 +1291,7 @@
                             var smallInfo = main.ce("div", {
                                 class: "stnd-block-yellow",
                                 style: "padding: 15px;",
-                                html: '<span class="ico" style="background-position:-216px -364px;"></span>Никому не сообщайте значения ваших cookies! Не делайте скриншот этой страницы, на котором будут видны эти значения! От этого зависит безопасность вашего аккаунта!'
+                                html: '<span class="ico ico_alert"></span>Никому не сообщайте значения ваших cookies! Не делайте скриншот этой страницы, на котором будут видны эти значения! От этого зависит безопасность вашего аккаунта!'
                             });
                             var infoDiv = main.ce("div", {
                                 class: "none"
@@ -2603,7 +2618,21 @@
                 if (!timer) {
                     setTimeout(function() {
                         if (main.qs("#SP_PLUS_ALERT")) main.qs("#SP_PLUS_ALERT").parentNode.removeChild(alDiv);
-                    }, 3000);
+                    }, 4000);
+                }
+            },
+			alertmenu: function(html, close) {
+                var alDiv = main.qs("#SP_PLUS_ALERT");
+                if (alDiv) {
+                    alDiv.innerHTML = (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html;
+                } else {
+                    alDiv = main.ce("div", {
+                        class: "sp_plus_alert_y",
+						style: "overflow: scroll;",
+                        id: "SP_PLUS_ALERT",
+                        html: (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html
+                    });
+                    document.body.appendChild(alDiv);
                 }
             },
             comments: function() {
@@ -2791,13 +2820,13 @@
                             var dwnTd = main.ce("td", {
                                 id: "SP_MUSIC_DOWN",
                                 class: "ico_td",
-                                innerHTML: '<a href="' + trScr + '" onclick="window.open(\'' + trScr + '\'); return true;" class="tdn"></span><span class="ico ico_download2" title="Скачать"></span></a>'
+                                innerHTML: '<a href="' + trScr + '" target="_blank" class="tdn"></span><span class="ico ico_download2" title="Скачать"></span></a>'
                             });
                             main.insertAfter(dwnTd, tdIc[0]);
                         } else if (downPlace && playerId != trId) {
                             playerId = trId;
                             main.console.info("[S+] Обновили трек!");
-                            downPlace.innerHTML = '<a href="' + trScr + '" onclick="window.open(\'' + trScr + '\'); return true;" class="tdn"></span><span class="ico ico_download2" title="Скачать"></span></a>';
+                            downPlace.innerHTML = '<a href="' + trScr + '" target="_blank" class="tdn"></span><span class="ico ico_download2" title="Скачать"></span></a>';
                         }
                     }
                 } catch (e) {
@@ -2825,6 +2854,110 @@
                     }, 2);
                 }
             },
+            blogTools: function() {
+                var path = document.location.pathname.toString();
+                if (path == '/diary/read/' && !main.qs("#SP_PLUS_DELETEBL")) {
+                    try {
+                        var editLink = main.find(document.links, {
+                            href: _PROTOCOL + "//spaces.ru/diary/new/?"
+                        });
+                        if (!editLink) {
+                            editLink = main.find(document.links, {
+                                href: _PROTOCOL + "//spaces.ru/diary/share/index/?"
+                            });
+                            if (editLink && !/(\?|&)Topic_id=([0-9]+)/i.test(editLink[0].href)) {
+                                editLink = null;
+                            }
+                        }
+                        if (editLink) {
+                            for (var i = 0; i < editLink.length; i++) {
+                                if (editLink[i].className) {
+                                    editLink = editLink[i];
+                                    break;
+                                }
+                            }
+                        }
+                        var diaryId = main.getQuery("id") || main.getQuery("Topic_id");
+                        if (editLink && diaryId) {
+                            var commlnk = main.getQuery("address");
+                            var redUrl = _PROTOCOL + '//spaces.ru/diary/view/?';
+                            if (commlnk) {
+                                main.jajax(document.location.href, function(r) {
+                                    try {
+                                        if (r) {
+                                            var _json = {
+                                                'topicWidget': {
+                                                    'topicModels': {
+                                                        'topic_id': null
+                                                    }
+                                                }
+                                            };
+                                            var jsont = main.extend(_json, JSON.parse(r));
+                                            if (jsont.topicWidget.topicModel.owner_id) {
+                                                redUrl += 'comm=' + jsont.topicWidget.topicModel.owner_id;
+                                                main.console.info("[S+] Редирект: " + redUrl);
+                                            }
+                                        }
+                                    } catch (e) {
+                                        main.console.error('Ошибка (JSON_BLOGTOOLS_COMM): ' + e.name + ":" + e.message + "\n" + e.stack);
+                                    }
+                                });
+                            }
+                            var CK = main.getCK(0);
+                            if (editLink.parentNode.nodeName == "TD") {
+                                var wrTd = main.ce("td", {
+                                    class: editLink.parentNode.className
+                                });
+                                var delLink = main.ce("a", {
+                                    href: _PROTOCOL + "//spaces.ru/diary/delete/?id=" + diaryId + "&irb526786=1",
+                                    html: '<img src="' + _PROTOCOL + '//spac.me/i/remove.png" alt="" class="p16 m">',
+                                    id: "SP_PLUS_DELETEBL",
+                                    title: "Удалить запись",
+                                    class: editLink.className,
+                                    onclick: function() {
+                                        var titl = main.getClassName("div.blog-item__title", null);
+                                        if (titl) titl = ' <b style="color: #0000FF">' + titl[0].innerHTML + '</b>';
+                                        else titl = "";
+                                        main.confirmm('Хотите удалить запись' + titl + '?', function() {
+                                            main.ajax(_PROTOCOL + '//spaces.ru/diary/delete/', 'POST', 'CK=' + CK + '&Sure=1' + '&id=' + diaryId, function(r) {
+                                                main.setLocation(redUrl);
+                                            }, 2);
+                                        });
+                                        return false;
+                                    }
+                                });
+                                main.inBefore(wrTd, editLink.parentNode);
+                                wrTd.appendChild(delLink);
+                            } else {
+                                var delLink = main.ce("a", {
+                                    href: _PROTOCOL + "//spaces.ru/diary/delete/?id=" + diaryId + "&irb526786=1",
+                                    html: '<img src="' + _PROTOCOL + '//spac.me/i/remove.png" alt="" class="p16 m"> <span class="m">Удалить</span>',
+                                    id: "SP_PLUS_DELETEBL",
+                                    title: "Удалить запись",
+                                    class: editLink.className,
+                                    onclick: function() {
+                                        var titl = main.getClassName("div.blog-item__title", null);
+                                        if (titl) titl = ' <b style="color: #0000FF">' + titl[0].innerHTML + '</b>';
+                                        else titl = "";
+                                        main.confirmm('Хотите удалить запись' + titl + '?', function() {
+                                            main.ajax(_PROTOCOL + '//spaces.ru/diary/delete/', 'POST', 'CK=' + CK + '&Sure=1' + '&id=' + diaryId, function(r) {
+                                                main.setLocation(redUrl);
+                                            }, 2);
+                                        });
+                                        return false;
+                                    }
+                                });
+                                main.inBefore(delLink, editLink);
+                                if (editLink.nextElementSibling.nodeName == "BR") {
+                                    main.insertAfter(main.ce("br", null), delLink);
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        main.console.error('Ошибка (BLOGTOOLS): ' + e.name + ":" + e.message + "\n" + e.stack);
+                    }
+                }
+            },
             setStyle: function() {
                 var rev = main.service(1) || "777";
                 var parent = document.getElementsByTagName('head').item(0);
@@ -2832,15 +2965,12 @@
                     id: "SP_PLUS_INJSTYLE",
                     type: "text/css"
                 });
-                stl.innerHTML = ".sp_plus_alert_y{-webkit-box-shadow:#888 0 5px 90px 0;border:1px solid #e2b709;border-radius:5px;box-shadow:#888 0 5px 90px 0;color:#404040;display:block;font-family:sans-serif;font-weight:700;height:auto;padding:17px;position:fixed;text-align:center;margin-left:-156px;top:10%;left:50%;max-height:80%;width:275px;z-index:11000;background:#ffe57e;overflow:scroll;}.sp_plus_alertg,.sp_plus_small{background-color:#ddebf7}.sp_plus_small{margin:2px;color:#000;display:block;padding:3px;border-radius:2px}.sp_plus_small img{height:auto!important}.sp_plus_a{color:#006090;text-decoration:none!important;border-bottom:1px dashed}.sp_plus_alertr{background-color:#f9e1d9;color:#ff6837}.sp_plus_alertg,.sp_plus_alertr{background-clip:border-box;background-image:none;background-origin:padding-box;box-shadow:rgba(57,83,135,.3) 0 3px 5px 0;display:block;padding:10px;position:relative;font-size:13px}.sp_plus_ico_alert,.sp_plus_ico_del,.sp_plus_ico_info,.sp_plus_ico_okb,.sp_plus_ico_fav_off,.sp_plus_ico_fav_on{background-color:transparent;background-image:url(" + _PROTOCOL + "//spac.me/i/ico.png?r=" + rev + ");cursor:pointer;display:inline-block;height:16px;margin-bottom:2px;margin-right:4px;vertical-align:middle;text-align:center;width:16px}.sp_plus_ico_del{background-position:-180px -256px}.sp_plus_ico_okb{background-position:-116px -198px}.sp_plus_ico_alert{background-position:-108px -364px;cursor:default}.sp_plus_ico_info{background-position:-142px -52px;cursor:default}.sp_plus_ico_fav_off{background-position:-216px -256px}.sp_plus_ico_fav_on{background-position:-252px -256px}.sp_plus_button{cursor:pointer;background:#fff}.sp_plus_button:hover{background:#ecf5fd}.sp_plus_checkbox+label,.sp_plus_checkbox_el+label{position:relative;overflow:hidden;cursor:pointer;text-decoration:none!important}.sp_plus_checkbox+label{margin-left:5px;padding:0 4px 0 4px;vertical-align:top;width:16px;height:16px;display:inline-block}.sp_plus_checkbox_el+label{color:grey;padding:12px 5px 12px 25px}.sp_plus_checkbox+label:before,.sp_plus_checkbox_el+label:before{position:absolute;display:inline-block;content:'';background-position:-72px -220px;width:16px;height:16px;background-color:transparent;background-image:url(" + _PROTOCOL + "//spac.me/i/ico.png?r=" + rev + ")}.sp_plus_checkbox_el+label:before{left:3px;top:12px}.sp_plus_checkbox+label:before{top:8px;margin-top:-8px}.sp_plus_checkbox_el:checked+label{color:#323232}.sp_plus_checkbox:checked+label:before,.sp_plus_checkbox_el:checked+label:before{background-position:-252px -108px}.sp_plus_checkbox,.sp_plus_checkbox_el{position:absolute;left:-10000px}";
+                stl.innerHTML = ".sp_plus_alert_y{-webkit-box-shadow:#888 0 5px 90px 0;border:1px solid #e2b709;border-radius:5px;box-shadow:#888 0 5px 90px 0;color:#404040;display:block;font-family:sans-serif;font-weight:700;height:auto;padding:17px;position:fixed;text-align:center;margin-left:-156px;top:10%;left:50%;max-height:80%;width:275px;z-index:11000;background:#ffe57e;}.sp_plus_alertg,.sp_plus_small{background-color:#ddebf7}.sp_plus_small{margin:2px;color:#000;display:block;padding:3px;border-radius:2px}.sp_plus_small img{height:auto!important}.sp_plus_a{color:#006090;text-decoration:none!important;border-bottom:1px dashed}.sp_plus_alertr{background-color:#f9e1d9;color:#ff6837}.sp_plus_alertg,.sp_plus_alertr{background-clip:border-box;background-image:none;background-origin:padding-box;box-shadow:rgba(57,83,135,.3) 0 3px 5px 0;display:block;padding:10px;position:relative;font-size:13px}.sp_plus_ico_alert,.sp_plus_ico_del,.sp_plus_ico_info,.sp_plus_ico_okb,.sp_plus_ico_fav_off,.sp_plus_ico_fav_on{background-color:transparent;background-image:url(" + _PROTOCOL + "//spac.me/i/ico.png?r=" + rev + ");cursor:pointer;display:inline-block;height:16px;margin-bottom:2px;margin-right:4px;vertical-align:middle;text-align:center;width:16px}.sp_plus_ico_del{background-position:-180px -256px}.sp_plus_ico_okb{background-position:-116px -198px}.sp_plus_ico_alert{background-position:-108px -364px;cursor:default}.sp_plus_ico_info{background-position:-142px -52px;cursor:default}.sp_plus_ico_fav_off{background-position:-216px -256px}.sp_plus_ico_fav_on{background-position:-252px -256px}.sp_plus_button{cursor:pointer;background:#fff}.sp_plus_button:hover{background:#ecf5fd}.sp_plus_checkbox+label,.sp_plus_checkbox_el+label{position:relative;overflow:hidden;cursor:pointer;text-decoration:none!important}.sp_plus_checkbox+label{margin-left:5px;padding:0 4px 0 4px;vertical-align:top;width:16px;height:16px;display:inline-block}.sp_plus_checkbox_el+label{color:grey;padding:12px 5px 12px 25px}.sp_plus_checkbox+label:before,.sp_plus_checkbox_el+label:before{position:absolute;display:inline-block;content:'';background-position:-72px -220px;width:16px;height:16px;background-color:transparent;background-image:url(" + _PROTOCOL + "//spac.me/i/ico.png?r=" + rev + ")}.sp_plus_checkbox_el+label:before{left:3px;top:12px}.sp_plus_checkbox+label:before{top:8px;margin-top:-8px}.sp_plus_checkbox_el:checked+label{color:#323232}.sp_plus_checkbox:checked+label:before,.sp_plus_checkbox_el:checked+label:before{background-position:-252px -108px}.sp_plus_checkbox,.sp_plus_checkbox_el{position:absolute;left:-10000px}";
                 if (_SETTINGS.bodystyle) {
                     if (_SETTINGS.bodystyle.url && _SETTINGS.bodystyle.urlchecked) stl.innerHTML += 'body,#main_wrap{background-image:url(' + _SETTINGS.bodystyle.url + ')}';
                     if (_SETTINGS.bodystyle.color && _SETTINGS.bodystyle.colorchecked) stl.innerHTML += 'body,#main_wrap{background-color:' + _SETTINGS.bodystyle.color + '}';
                 }
                 parent.appendChild(stl);
-            },
-            rever: function(s) {
-                return s ? s.toString.split("").join(".") : s;
             },
             start: function() {
                 if (_SETTINGS.blocked) main.bannedTools();
@@ -2852,7 +2982,9 @@
                 if (_SETTINGS.friendsOn) main.friendsOnline(1);
                 if (_SETTINGS.gifts) main.gifts();
                 if (_SETTINGS.rscroll) main.scrollMove(1);
+                if (_SETTINGS.hrightbar) main.hiddenRightbar(1);
                 if (_SETTINGS.coins) main.coins();
+                if (_SETTINGS.fileTools) main.blogTools();
                 if (_SETTINGS.myEvents) main.events();
                 if (_SETTINGS.isOnline) main.isOnlineSupport(0);
                 if (_SETTINGS.playerdn) {
