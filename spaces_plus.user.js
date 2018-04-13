@@ -55,6 +55,7 @@
             'hrightbar': false,
             'playerdn': true,
             'coins': true,
+            'rurl': false,
             'fileTools': true,
             'gifts': false,
             'online': true,
@@ -97,6 +98,7 @@
             'hrightbar': "Скрыть правое меню",
             'blocked': "Открытые разделы удаленных пользователей",
             'coins': "Собирать бонусные монеты",
+            'rurl': "Автоматический редирект внешних ссылок",
             'bodystyle': "Задать фон сайта",
             'gifts': "Предпросмотр подарков"
         };
@@ -2621,14 +2623,14 @@
                     }, 4000);
                 }
             },
-			alertmenu: function(html, close) {
+            alertmenu: function(html, close) {
                 var alDiv = main.qs("#SP_PLUS_ALERT");
                 if (alDiv) {
                     alDiv.innerHTML = (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html;
                 } else {
                     alDiv = main.ce("div", {
                         class: "sp_plus_alert_y",
-						style: "overflow: scroll;",
+                        style: "overflow: scroll;",
                         id: "SP_PLUS_ALERT",
                         html: (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html
                     });
@@ -2854,6 +2856,18 @@
                     }, 2);
                 }
             },
+            redirectURL: function() {
+                var backURL = main.getClassName('a.c-red');
+                var redirectURL = main.find(document.links, {
+                    href: _PROTOCOL + "//spaces.ru/redirect/?"
+                });
+                if (redirectURL && backURL) {
+                    redirectURL = redirectURL[0];
+                    main.remove(redirectURL);
+                    window.open(redirectURL, '_blank');
+                    main.setLocation(backURL);
+                }
+            },
             blogTools: function() {
                 var path = document.location.pathname.toString();
                 if (path == '/diary/read/' && !main.qs("#SP_PLUS_DELETEBL")) {
@@ -2984,6 +2998,7 @@
                 if (_SETTINGS.rscroll) main.scrollMove(1);
                 if (_SETTINGS.hrightbar) main.hiddenRightbar(1);
                 if (_SETTINGS.coins) main.coins();
+                if (_SETTINGS.rurl) main.redirectURL();
                 if (_SETTINGS.fileTools) main.blogTools();
                 if (_SETTINGS.myEvents) main.events();
                 if (_SETTINGS.isOnline) main.isOnlineSupport(0);
