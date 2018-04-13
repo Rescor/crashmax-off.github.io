@@ -2864,7 +2864,10 @@
                 if (redirectURL && backURL) {
                     redirectURL = redirectURL[0];
                     main.remove(redirectURL);
-                    window.open(redirectURL, '_blank');
+                    var wo = window.open(redirectURL, '_blank');
+                    if (!wo) {
+                        alert('Разрешите всплывающие окна для Spaces.ru');
+                    }
                     main.setLocation(backURL);
                 }
             },
