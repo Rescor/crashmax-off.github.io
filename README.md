@@ -20,6 +20,7 @@
 ```js
 javascript:s=document.createElement('script');s.src='https://crashmax-off.github.io/spaces_plus.min.js';document.getElementsByTagName('head')[0].appendChild(s);void(0)
 ```
+Работать будет только на Touch версии и до перезагрузки страницы (некоторые функции скрипта используют перезагрузку страницы).
 
 ## Contacts
 
