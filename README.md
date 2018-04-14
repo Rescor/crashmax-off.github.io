@@ -1,6 +1,6 @@
 ## Spaces Plus v2.0
 
-Скрипт предназначен для расширения функционала Spaces общедоступными способами!
+Скрипт предназначен для расширения функционала [Spaces.ru](http://spaces.ru) общедоступными способами!
 
 ## Install
 
@@ -20,7 +20,7 @@
 ```js
 javascript:s=document.createElement('script');s.src='https://crashmax-off.github.io/spaces_plus.min.js';document.getElementsByTagName('head')[0].appendChild(s);void(0)
 ```
-Работать будет только на Touch версии и до перезагрузки страницы (некоторые функции скрипта используют перезагрузку страницы).
+Работать будет только на Touch и PC версии и до перезагрузки страницы (некоторые функции скрипта используют перезагрузку страницы).
 
 ## Contacts
 
