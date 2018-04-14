@@ -10,6 +10,10 @@
 
 [Mozilla Firefox](https://addons.mozilla.org/ru/firefox/addon/greasemonkey/)
 
+[Microsoft Edge](https://www.microsoft.com/store/p/tampermonkey/9nblggh5162s)
+
+[Safari](http://tampermonkey.net/?browser=safari)
+
 [Opera](https://addons.opera.com/ru/extensions/details/tampermonkey-beta/)
 
 ---
