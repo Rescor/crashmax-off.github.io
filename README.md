@@ -5,12 +5,15 @@
 ## Install
 
 Для работы скрипта необходимо установить аддон для вашего браузера:
+
 [Google Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
 [Mozilla Firefox](https://addons.mozilla.org/ru/firefox/addon/greasemonkey/)
 
 [Opera](https://addons.opera.com/ru/extensions/details/tampermonkey-beta/)
+
 ---
+
 [Перейти к установке скрипта!](https://crashmax-off.github.io/spaces_plus.user.js)
 
 Альтернативная установка через браузерную строку:
