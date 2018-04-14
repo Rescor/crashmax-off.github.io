@@ -4,9 +4,11 @@
 
 ## Install
 
-[Google Chrome]: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
-[Mozilla Firefox]: https://addons.mozilla.org/ru/firefox/addon/greasemonkey/
-[Opera]: https://addons.opera.com/ru/extensions/details/tampermonkey-beta/
+[Google Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+
+[Mozilla Firefox](https://addons.mozilla.org/ru/firefox/addon/greasemonkey/)
+
+[Opera](https://addons.opera.com/ru/extensions/details/tampermonkey-beta/)
 
 Альтернативная установка через браузерную строку:
 ```js
@@ -15,4 +17,4 @@ javascript:s=document.createElement('script');s.src='https://crashmax-off.github
 
 ## Contacts
 
-[Official group Spaces.ru]: http://spaces.ru/comm/show/?address=Extension Bugs and Offers
+[Official group Spaces.ru](http://spaces.ru/comm/show/?address=Extension "Баги и предложения")
