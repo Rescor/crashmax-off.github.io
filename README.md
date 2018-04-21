@@ -34,4 +34,4 @@ javascript:s=document.createElement('script');s.src='https://crashmax-off.github
 
 ## Contacts
 
-[Official group Spaces.ru](http://spaces.ru/comm/show/?address=Extension "Баги и предложения")
+[Официальная группа Spaces+](http://spaces.ru/comm/show/?address=Extension "Баги и предложения")
