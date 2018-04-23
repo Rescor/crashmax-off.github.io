@@ -285,13 +285,13 @@
                                         for (var i in _SETTINGS) {
                                             if (i == 'bodystyle') {
                                                 var bstlWrap = main.ce("div", {
-                                                    style: "padding-left: 7px; margin-left: 7px; border-left: 5px solid #92BEE2;"
+                                                    class: "stnd-link"
                                                 });
                                                 var bstyle = main.ce("input", {
                                                     type: "text",
                                                     value: _SETTINGS.bodystyle.url,
                                                     class: "text-input",
-                                                    style: "width: 40%;",
+                                                    style: "width: 50%;",
                                                     placeholder: "URL изображения"
                                                 });
                                                 bstyle.onchange = bstyle.oninput = function(e) {
@@ -353,14 +353,15 @@
                                                         main.setStyle();
                                                     }
                                                 });
-                                                var lbl = main.ce("span", {
-                                                    html: "Фон сайта"
+                                                var lbl = main.ce("div", {
+                                                    class: "sp_plus_line",
+                                                    html: "<span class='sp_plus_text'>Фон сайта</span>"
                                                 });
                                                 var lblstyle = main.ce("span", {
                                                     html: " - URL"
                                                 });
                                                 var lblstylec = main.ce("span", {
-                                                    html: " - Цвет"
+                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картину!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/bg/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico\" style=\"background-position: -234px -144px;\"></span></a>"
                                                 });
                                                 var lblstylelbl = main.ce("label", {
                                                     attr: {
@@ -377,13 +378,11 @@
                                                 bstlWrap.appendChild(lblstylelbl);
                                                 lblstylelbl.appendChild(bstyle);
                                                 lblstylelbl.appendChild(lblstyle);
-                                                bstlWrap.appendChild(main.ce("br", null));
                                                 bstlWrap.appendChild(inbstylec);
                                                 bstlWrap.appendChild(lblstyleclbl);
                                                 lblstyleclbl.appendChild(bstylec);
                                                 lblstyleclbl.appendChild(lblstylec);
                                                 setArea.appendChild(bstlWrap);
-                                                setArea.appendChild(main.ce("br", null));
                                             } else if (typeof _SETSTRINGS[i] != "undefined") {
                                                 var tmpCkb = main.ce("input", {
                                                     id: "sp_set_" + i,
@@ -453,11 +452,15 @@
                                                         "for": "sp_set_" + i
                                                     }
                                                 });
+                                                var bstlWrap2 = main.ce("label", {
+                                                    class: "stnd-link"
+                                                });
                                             }
                                             if (typeof _SETSTRINGS[i] != "undefined") {
-                                                setArea.appendChild(tmpCkb);
-                                                setArea.appendChild(tmpLbl);
-                                                setArea.appendChild(main.ce("br", null));
+                                                bstlWrap2.appendChild(tmpCkb);
+                                                bstlWrap2.appendChild(tmpLbl);
+                                                setArea.appendChild(bstlWrap2);
+                                                setArea.appendChild(bstlWrap2);
                                             }
                                         }
                                         if (_SETTINGS.friendsOn) {
@@ -480,7 +483,6 @@
                                             class: "sp_plus_line",
                                             html: "<span class='sp_plus_text'>Дополнительные функции</span>"
                                         });
-                                        setArea.appendChild(main.ce("br", null));
                                         setArea.appendChild(spActLbl);
                                         main.spacesAction(setArea);
                                         main.newbequest();
@@ -983,7 +985,7 @@
                     });
                     c2mWrap.appendChild(c2m);
                     c2mWrap.appendChild(c2mLbl);
-                    main.insertAfter(c2mWrap, e.nextElementSibling.nextElementSibling);
+                    main.insertAfter(c2mWrap, e.nextElementSibling);
                 } catch (e) {
                     main.console.error('Ошибка (C2M_SUPPORT): ' + e.name + ":" + e.message + "\n" + e.stack);
                 }
@@ -997,6 +999,7 @@
                     var frMax = main.ce("input", {
                         type: "number",
                         class: "text-input",
+                        style: "width: 8%;",
                         min: 1,
                         max: 15,
                         step: 1,
@@ -1044,7 +1047,7 @@
                     frMaxWrap.appendChild(main.ce("br", null));
                     frMaxWrap.appendChild(frListSH);
                     frMaxWrap.appendChild(frListSHLbl);
-                    main.insertAfter(frMaxWrap, e.nextElementSibling.nextElementSibling);
+                    main.insertAfter(frMaxWrap, e.nextElementSibling);
                 } catch (e) {
                     main.console.error('Ошибка (FRIENDS_MAX_SUPPORT): ' + e.name + ":" + e.message + "\n" + e.stack);
                 }
@@ -1096,7 +1099,7 @@
                         type: "url",
                         value: _SETTINGS.events.url,
                         class: "text-input",
-                        style: "width: 40%",
+                        style: "width: 95%",
                         placeholder: "https://example.com/sound.ogg"
                     });
                     eventsUrl.onchange = eventsUrl.oninput = function(e) {
@@ -1213,7 +1216,7 @@
                     eventsWrap.appendChild(feedEvent);
                     eventsWrap.appendChild(feedEventLbl);
                     eventsWrap.appendChild(main.ce("br", null));
-                    main.insertAfter(eventsWrap, e.nextElementSibling.nextElementSibling);
+                    main.insertAfter(eventsWrap, e.nextElementSibling);
                 } catch (e) {
                     main.console.error('Ошибка (EVENTS_SUP): ' + e.name + ":" + e.message + "\n" + e.stack);
                 }
@@ -1436,7 +1439,7 @@
                     href: 'javascript:var Arr=[\'<div class="time-block" style="text-align: left;" id="wrap_spacesAction_AD"><a href="#" id="api_debug-button">API-Debugger</a><div id="api_debug-place"></div></div>\',"append","parent","#navi","debugger"];$(Arr[3])[Arr[2]]()[Arr[1]](Arr[0]),require(Arr[4]);void(0);',
                     class: "stnd-link stnd-link_arr",
                     id: "sp_spacesAction_AD",
-                    html: "<span class='b'><span class='ico ico_add'></span> API-Debugger<span> - тестирование API сайта</span><span class='ico ico_arr ico_m'></span></span>",
+                    html: "<span class='b'><span class='ico ico_settings'></span> API-Отладчик<span class='ico ico_arr ico_m'></span></span>",
                     style: "font-size: small;",
                     onclick: function(e) {
                         var check = main.qs("#wrap_spacesAction_AD");
@@ -1470,7 +1473,7 @@
                     href: '#',
                     class: "stnd-link stnd-link_arr",
                     id: "sp_spacesFAT",
-                    html: (fat ? "<span class='b'><span class='ico' style='background-image: url(\"//spac.me/i/remove.png\");'></span> Убрать полосу загрузки<span class='ico ico_arr ico_m'></span></span>" : "<span class='b'><span class='ico ico_ok_grey'></span> Добавить AJAX полосу загрузки страницы<span class='ico ico_arr ico_m'></span><span>"),
+                    html: (fat ? "<span class='b'><span class='ico' style='background-image: url(\"//spac.me/i/remove.png\");'></span> Убрать полосу загрузки<span class='ico ico_arr ico_m'></span></span>" : "<span class='b'><span class='ico ico_ok_grey'></span> Добавить ajax полосу загрузки страницы<span class='ico ico_arr ico_m'></span><span>"),
                     style: "font-size: small;",
                     onclick: function(e) {
                         if (fat) {
@@ -3081,7 +3084,7 @@
                     });
                     dmNav.appendChild(dm);
                     dmNav.appendChild(dmCheck);
-                    main.insertAfter(dmNav, t.nextElementSibling.nextElementSibling);
+                    main.insertAfter(dmNav, t.nextElementSibling);
                 } catch (t) {
                     main.console.error('Ошибка (DARKMODE-NAV): ' + t.name + ":" + t.message + "\n" + t.stack);
                 }
