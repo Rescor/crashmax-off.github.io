@@ -94,7 +94,7 @@
             'fileTools': "Дополнительные кнопки в блогах",
             'darkMode': "Темная тема",
             'friendsOn': "Панель друзей онлайн",
-            'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/sn/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico\" style=\"background-position: -234px -144px;\"></span></a>",
+            'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/sn/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>",
             'online': "Точное время онлайн в анкетах",
             'ads': "Скрывать рекламу",
             'favorite': "Возможность добавить пользователя в закладки",
@@ -279,7 +279,7 @@
                                     } else if (prnt.className == "main") {
                                         prnt.innerHTML = prnt.firstElementChild.outerHTML.replace("Настройки", 'Настройки <span style="color: #0000FF;">Spaces+</span>') + '<div class="start_page_padd light_blue_bg"><b id="SP_PLUS_SETHEAD">Настройки <span style="color: #0000FF;">Spaces+ ' + rVer + '</span></b></div><div id="SP_PLUS_SETAREA"></div><a id="SP_PLUS_SETBACK" href="http://spaces.ru/settings/?" class="link-return full_link"><span class="ico ico_arrow-back"></span><span class="m">Назад</span></a>';
                                     } else {
-                                        main.alertmenu('<h4>Настройки <span>Spaces+ <sup>' + rVer + '</sup></span></h4><div style="line-height:1.5;display:block;height:100%;color:#ec1212;">Меню настроек больше не поддерживается на Mobile и Lite версии сайта!<br> Используйте <a href="' + _PROTOCOL + '//spaces.ru/services/force_device_type/?Vck=' + CK + '&dtype=touch">Touch</a> или <a href="' + _PROTOCOL + '//spaces.ru/services/force_device_type/?Vck=' + CK + '&dtype=desktop">PC</a> версию!</div>', 1, 1);
+                                        main.alertm('<h4>Настройки <span>Spaces+ <sup>' + rVer + '</sup></span></h4><div style="line-height:1.5;display:block;height:100%;color:#ec1212;">Меню настроек больше не поддерживается на Mobile и Lite версии сайта!<br> Используйте <a href="' + _PROTOCOL + '//spaces.ru/services/force_device_type/?Vck=' + CK + '&dtype=touch">Touch</a> или <a href="' + _PROTOCOL + '//spaces.ru/services/force_device_type/?Vck=' + CK + '&dtype=desktop">PC</a> версию!</div>', 1, 1);
                                     }
                                     var setArea = main.qs("#SP_PLUS_SETAREA");
                                     if (setArea) {
@@ -363,7 +363,7 @@
                                                     html: " - URL"
                                                 });
                                                 var lblstylec = main.ce("span", {
-                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/bg/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico\" style=\"background-position: -234px -144px;\"></span></a>"
+                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/bg/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>"
                                                 });
                                                 var lblstylelbl = main.ce("label", {
                                                     attr: {
@@ -2649,20 +2649,6 @@
                     }, 4000);
                 }
             },
-            alertmenu: function(html, close) {
-                var alDiv = main.qs("#SP_PLUS_ALERT");
-                if (alDiv) {
-                    alDiv.innerHTML = (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html;
-                } else {
-                    alDiv = main.ce("div", {
-                        class: "sp_plus_alert_y",
-                        style: "overflow: scroll;",
-                        id: "SP_PLUS_ALERT",
-                        html: (close ? '<img src="' + _PROTOCOL + '//spac.me/i/cross_r.gif" alt="" class="pointer right notif_close" onclick="document.body.removeChild(this.parentNode);" title="Закрыть" />' : '') + html
-                    });
-                    document.body.appendChild(alDiv);
-                }
-            },
             comments: function() {
                 var childs = main.getClassName("span.comment_date", null);
                 var bttlDiv = main.qs("#SP_PLUS_BOTTOM_DIV");
@@ -3140,7 +3126,7 @@
                 main.start();
                 setInterval(function() {
                     main.start();
-                }, 100);
+                }, 200);
                 main.setStyle();
             }
         };
