@@ -2,7 +2,7 @@
 
 - Скрипт предназначен для расширения функционала [Spaces.ru](http://spaces.ru) общедоступными способами!
 
-## Installing
+## Install
 
 Для работы скрипта необходимо установить расширение для вашего браузера:
 
@@ -16,19 +16,7 @@
 
 - [Opera](https://addons.opera.com/ru/extensions/details/tampermonkey-beta/)
 
-- [Нажмите, чтобы установить!](https://crashmax-off.github.io/spaces_plus.user.js)
-
-Альтернативная установка через браузерную строку:
-```js
-javascript:s=document.createElement('script');s.src='https://crashmax-off.github.io/spaces_plus.min.js';document.getElementsByTagName('head')[0].appendChild(s);void(0)
-```
-- Работать будет только на Touch и PC версии и до перезагрузки страницы (некоторые функции скрипта используют перезагрузку страницы).
-
-## References
-
-- [Рингтоны](https://crashmax-off.github.io/sn/)
-
-- [Фоны](https://crashmax-off.github.io/bg/)
+Ccылка на установку: [Нажмите, чтобы установить!](https://crashmax-off.github.io/spaces_plus.user.js)
 
 ## Contacts
 
