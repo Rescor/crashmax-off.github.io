@@ -21,3 +21,7 @@ Ccылка на установку: [нажмите, чтобы установи
 ## Contacts
 
 - [Официальная группа Spaces+](http://spaces.ru/comm/show/?address=Extension "Баги и предложения")
+
+## License
+
+MIT
