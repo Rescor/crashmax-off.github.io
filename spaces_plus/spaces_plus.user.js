@@ -94,7 +94,7 @@
             'fileTools': "Дополнительные кнопки в блогах",
             'darkMode': "Темная тема",
             'friendsOn': "Панель друзей онлайн",
-            'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/sn/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>",
+            'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/spaces_plus/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>",
             'online': "Точное время онлайн в анкетах",
             'ads': "Скрывать рекламу",
             'favorite': "Возможность добавить пользователя в закладки",
@@ -363,7 +363,7 @@
                                                     html: " - URL"
                                                 });
                                                 var lblstylec = main.ce("span", {
-                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/bg/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>"
+                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/spaces_plus/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>"
                                                 });
                                                 var lblstylelbl = main.ce("label", {
                                                     attr: {
