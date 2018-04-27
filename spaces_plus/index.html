@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Список Фонов</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<style>
+			.card-body {
+				text-align: center;
+			}
+			.col-md-4 {
+				margin-bottom: 2rem;
+			}
+			.nav-tabs {
+				margin-bottom: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<div class="py-5">
+			<ul class="nav nav-pills mb-3" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="backgrounds-tab" data-toggle="tab" href="#backgrounds" role="tab" aria-controls="backgrounds" aria-selected="true">Фоны</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="sounds-tab" data-toggle="tab" href="#sounds" role="tab" aria-controls="sounds" aria-selected="false">Звуки</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://raw.githubusercontent.com/crashmax-off/spaces-plus/master/spaces_plus.user.js">Скачать Spaces+</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
+					<div class="row hidden-md-up">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/default.jpg" alt="https://crashmax-off.github.io/bg/default.jpg" id="default">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('default')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/bananas.jpg" alt="https://crashmax-off.github.io/bg/bananas.jpg" id="bananas">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('bananas')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/cats.jpg" alt="https://crashmax-off.github.io/bg/cats.jpg" id="cats">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('cats')">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/ethnic-binary.jpg" alt="https://crashmax-off.github.io/bg/ethnic-binary.jpg" id="ethnic-binary">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('ethnic-binary')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/hearts.jpg" alt="https://crashmax-off.github.io/bg/hearts.jpg" id="hearts">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('hearts')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/skull-and-bones.jpg" alt="https://crashmax-off.github.io/bg/skull-and-bones.jpg" id="skull-and-bones">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('skull-and-bones')">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/water.jpg" alt="https://crashmax-off.github.io/bg/water.jpg" id="water">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('water')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/stars.gif" alt="https://crashmax-off.github.io/bg/stars.gif" id="stars">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('stars')">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-block">
+									<img class="card-img-top" src="https://crashmax-off.github.io/bg/yellow-leaves.jpg" alt="https://crashmax-off.github.io/bg/yellow-leaves.jpg" id="yellow-leaves">
+									<div class="card-body">
+										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('yellow-leaves')">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sounds" role="tabpanel" aria-labelledby="sounds-tab">
+					...
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	function copy(elm) {
+	    var img = document.getElementById(elm);
+	    var r = document.createRange();
+	    r.setStartBefore(img);
+	    r.setEndAfter(img);
+	    r.selectNode(img);
+	    var sel = window.getSelection();
+	    sel.addRange(r);
+	    document.execCommand('Copy');
+	    sel.removeRange(r)
+	}
+	</script>
+	</body>
+</html>
