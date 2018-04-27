@@ -360,10 +360,10 @@
                                                     html: "<span class='sp_plus_text'>Фон сайта</span>"
                                                 });
                                                 var lblstyle = main.ce("span", {
-                                                    html: " - URL"
+                                                    html: " - картинка <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/spaces_plus/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>"
                                                 });
                                                 var lblstylec = main.ce("span", {
-                                                    html: " - Цвет <a href='#' onclick='if(confirm(\"Указывайте прямую ссылку на картинку!\\n\\nХотите открыть каталог фонов?\")) {window.open(\"https://crashmax-off.github.io/spaces_plus/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>"
+                                                    html: " - цвет"
                                                 });
                                                 var lblstylelbl = main.ce("label", {
                                                     attr: {
@@ -472,6 +472,7 @@
                                         bstlWrap.appendChild(lblstylelbl);
                                         lblstylelbl.appendChild(bstyle);
                                         lblstylelbl.appendChild(lblstyle);
+                                        bstlWrap.appendChild(main.ce("br", null));
                                         bstlWrap.appendChild(inbstylec);
                                         bstlWrap.appendChild(lblstyleclbl);
                                         lblstyleclbl.appendChild(bstylec);
