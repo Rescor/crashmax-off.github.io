@@ -16,7 +16,7 @@
 
 - [Opera](https://addons.opera.com/ru/extensions/details/tampermonkey-beta/)
 
-Ccылка на установку: [Нажмите, чтобы установить!](https://crashmax-off.github.io/spaces_plus.user.js)
+Ccылка на установку: [нажмите, чтобы установить!](https://crashmax-off.github.io/spaces_plus/spaces_plus.user.js)
 
 ## Contacts
 
