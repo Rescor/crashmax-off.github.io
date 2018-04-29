@@ -47,34 +47,32 @@
 		</div>
 	</div>
 	<script>
-		var data = null;
-			$.getJSON('data.json', function(result) {
-				data = result;
-		});
-		$(function() {
-			for(var i = 0; i < data.backgrounds.length;) {
-				$tr = $('<div class="row">');
-				$tr.append(
-					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
-				);
-				i+=1
-				$tr.append(
-					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
-				);
-				i+=1
-				$tr.append(
-					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
-				);
-				i+=1
-				$tr.appendTo('#backgrounds');
-			};
-			$("#bg-data").append(data.backgrounds.length);
-		});
-		$(function() {
-			$.each(data.sounds, function(index, item) {
-				$("#sounds_rel").append('<li class="list-group-item"><audio class="player" controls><source src="'+ item.url +'" type="'+ item.type +'"></li>')
+		$.getJSON('data.json', function(data) {
+			$(function() {
+				for(var i = 0; i < data.backgrounds.length;) {
+					$tr = $('<div class="row">');
+					$tr.append(
+						$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+					);
+					i+=1
+					$tr.append(
+						$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+					);
+					i+=1
+					$tr.append(
+						$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+					);
+					i+=1
+					$tr.appendTo('#backgrounds');
+				};
+				$("#bg-data").append(data.backgrounds.length);
 			});
-			$("#sn-data").append(data.sounds.length);
+			$(function() {
+				$.each(data.sounds, function(index, item) {
+					$("#sounds_rel").append('<li class="list-group-item"><audio class="player" controls><source src="'+ item.url +'" type="'+ item.type +'"></li>')
+				});
+				$("#sn-data").append(data.sounds.length);
+			});
 		});
 		function copy(elm) {
 			var img = document.getElementById(elm);
