@@ -17,6 +17,13 @@
 			.nav-tabs {
 				margin-bottom: 1rem;
 			}
+			.btn > btn-primary, .btn-block {
+				border-top-left-radius: unset;
+				border-top-right-radius: unset;
+			}
+			.player {
+				width: 100%;
+			}
 		</style>
 	</head>
 	<body>
@@ -24,132 +31,62 @@
 		<div class="py-5">
 			<ul class="nav nav-pills mb-3" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link active" id="backgrounds-tab" data-toggle="tab" href="#backgrounds" role="tab" aria-controls="backgrounds" aria-selected="true">Фоны <span class="badge badge-light">9</span></a>
+					<a class="nav-link active" id="backgrounds-tab" data-toggle="tab" href="#backgrounds" role="tab" aria-controls="backgrounds" aria-selected="true">Фоны <span class="badge badge-light" id="bg-data"></span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="sounds-tab" data-toggle="tab" href="#sounds" role="tab" aria-controls="sounds" aria-selected="false">Звуки <span class="badge badge-light">0</span></a>
+					<a class="nav-link" id="sounds-tab" data-toggle="tab" href="#sounds" role="tab" aria-controls="sounds" aria-selected="false">Звуки <span class="badge badge-light" id="sn-data"></span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="https://raw.githubusercontent.com/crashmax-off/spaces-plus/master/spaces_plus.user.js">Скачать Spaces+</a>
+					<a class="nav-link" href="spaces_plus.user.js">Скачать Spaces+</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
-					<div class="row hidden-md-up">
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/default.jpg" alt="https://crashmax-off.github.io/bg/default.jpg" id="default">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('default')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/bananas.jpg" alt="https://crashmax-off.github.io/bg/bananas.jpg" id="bananas">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('bananas')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/cats.jpg" alt="https://crashmax-off.github.io/bg/cats.jpg" id="cats">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('cats')">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/ethnic-binary.jpg" alt="https://crashmax-off.github.io/bg/ethnic-binary.jpg" id="ethnic-binary">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('ethnic-binary')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/hearts.jpg" alt="https://crashmax-off.github.io/bg/hearts.jpg" id="hearts">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('hearts')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/skull-and-bones.jpg" alt="https://crashmax-off.github.io/bg/skull-and-bones.jpg" id="skull-and-bones">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('skull-and-bones')">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/water.jpg" alt="https://crashmax-off.github.io/bg/water.jpg" id="water">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('water')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/stars.gif" alt="https://crashmax-off.github.io/bg/stars.gif" id="stars">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('stars')">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="card-block">
-									<img class="card-img-top" src="https://crashmax-off.github.io/bg/yellow-leaves.jpg" alt="https://crashmax-off.github.io/bg/yellow-leaves.jpg" id="yellow-leaves">
-									<div class="card-body">
-										<input type="button" class="btn btn-primary" value="Скопировать" onclick="copy('yellow-leaves')">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="sounds" role="tabpanel" aria-labelledby="sounds-tab">
-					...
-				</div>
+				<div class="tab-pane fade show active" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab"></div>
+				<div class="tab-pane fade" id="sounds" role="tabpanel" aria-labelledby="sounds-tab"><div class="card"><ul class="list-group list-group-flush" id="sounds_rel"></ul></div></div>
 			</div>
 		</div>
 	</div>
 	<script>
-	function copy(elm) {
-	    var img = document.getElementById(elm);
-	    var r = document.createRange();
-	    r.setStartBefore(img);
-	    r.setEndAfter(img);
-	    r.selectNode(img);
-	    var sel = window.getSelection();
-	    sel.addRange(r);
-	    document.execCommand('Copy');
-	    sel.removeRange(r)
-	}
+		var data = null;
+			$.getJSON('data.json', function(result) {
+				data = result;
+		});
+		$(function() {
+			for(var i = 0; i < data.backgrounds.length;) {
+				$tr = $('<div class="row">');
+				$tr.append(
+					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+				);
+				i+=1
+				$tr.append(
+					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+				);
+				i+=1
+				$tr.append(
+					$('<div class="col-md-4"><div class="card"><div class="card-block"><img class="card-img-top" src="' + data.backgrounds[i].url + '" alt="' + data.backgrounds[i].url + '" id="' + data.backgrounds[i].name + '"><input type="button" class="btn btn-primary btn-block" value="Скопировать" onclick="copy(\'' + data.backgrounds[i].name + '\')"></div></div></div>')
+				);
+				i+=1
+				$tr.appendTo('#backgrounds');
+			};
+			$("#bg-data").append(data.backgrounds.length);
+		});
+		$(function() {
+			$.each(data.sounds, function(index, item) {
+				$("#sounds_rel").append('<li class="list-group-item"><audio class="player" controls><source src="'+ item.url +'" type="'+ item.type +'"></li>')
+			});
+			$("#sn-data").append(data.sounds.length);
+		});
+		function copy(elm) {
+			var img = document.getElementById(elm);
+			var r = document.createRange();
+			r.setStartBefore(img);
+			r.setEndAfter(img);
+			r.selectNode(img);
+			var sel = window.getSelection();
+			sel.addRange(r);
+			document.execCommand('Copy');
+			sel.removeRange(r);
+		};
 	</script>
 	</body>
 </html>
