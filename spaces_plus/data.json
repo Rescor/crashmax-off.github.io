@@ -1,55 +1,55 @@
 {
 	"backgrounds": [{
 		"name": "default",
-		"url": "https://crashmax-off.github.io/bg/default.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/default.jpg"
 	}, {
 		"name": "bananas",
-		"url": "https://crashmax-off.github.io/bg/bananas.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/bananas.jpg"
 	}, {
 		"name": "cats",
-		"url": "https://crashmax-off.github.io/bg/cats.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/cats.jpg"
 	}, {
 		"name": "ethnic-binary",
-		"url": "https://crashmax-off.github.io/bg/ethnic-binary.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/ethnic-binary.jpg"
 	}, {
 		"name": "hearts",
-		"url": "https://crashmax-off.github.io/bg/hearts.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/hearts.jpg"
 	}, {
 		"name": "skull-and-bones",
-		"url": "https://crashmax-off.github.io/bg/skull-and-bones.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/skull-and-bones.jpg"
 	}, {
 		"name": "water",
-		"url": "https://crashmax-off.github.io/bg/water.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/water.jpg"
 	}, {
 		"name": "stars",
-		"url": "https://crashmax-off.github.io/bg/stars.gif"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/stars.gif"
 	}, {
 		"name": "yellow-leaves",
-		"url": "https://crashmax-off.github.io/bg/yellow-leaves.jpg"
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/yellow-leaves.jpg"
 	}],
 	"sounds": [{
 		"name": "default",
-		"url": "https://crashmax-off.github.io/sn/default.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/default.ogg",
 		"type": "audio/ogg"
 	}, {
 		"name": "vk",
-		"url": "https://crashmax-off.github.io/sn/vk.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/vk.ogg",
 		"type": "audio/ogg"
 	}, {
 		"name": "telegram",
-		"url": "https://crashmax-off.github.io/sn/tg.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/tg.ogg",
 		"type": "audio/ogg"
 	}, {
 		"name": "icq",
-		"url": "https://crashmax-off.github.io/sn/icq.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/icq.ogg",
 		"type": "audio/ogg"
 	}, {
 		"name": "push",
-		"url": "https://crashmax-off.github.io/sn/push.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/push.ogg",
 		"type": "audio/ogg"
 	}, {
 		"name": "notify",
-		"url": "https://crashmax-off.github.io/sn/notify.ogg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/sounds/notify.ogg",
 		"type": "audio/ogg"
 	}]
 }
