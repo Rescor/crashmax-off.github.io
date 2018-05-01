@@ -93,7 +93,7 @@
             'blogsd': "Пакетное удаление блогов",
             'readersd': "Пакетное удаление читателей",
             'fileTools': "Дополнительные кнопки в блогах",
-            'darkMode': "Темная тема (BETA)",
+            'darkMode': "Темная тема",
             'friendsOn': "Панель друзей онлайн",
             'myEvents': "Свой звук уведомлений <a href='#' onclick='if(confirm(\"В настройках сайта должен быть выключен звук уведомлений. Файл должен быть в форматах *.ogg или *.mp3.\\nУказывайте прямую ссылку!\\n\\nХотите открыть каталог рингтонов?\")) {window.open(\"https://crashmax-off.github.io/spaces_plus/\", \"_blank\");} return false;' style='cursor: help;'><span class=\"ico ico_question_light\"></span></a>",
             'online': "Точное время онлайн в анкетах",
@@ -2475,7 +2475,8 @@
             },
             blogsDelete: function() {
                 var path = document.location.pathname.toString();
-                if ((path == '/diary/' || path == '/diary/view/' != '/diary/view/user/') && !main.qs("#SP_PLUS_BOTTOM_DIVB")) {
+                var p = path.split('/');
+                if ((p[1] == 'diary' && p[2] == null) || (p[1] == 'diary' && p[2] == 'view') && !main.qs("#SP_PLUS_BOTTOM_DIVB")) {
                     try {
                         var edLinks = main.find(document.links, {
                             href: _PROTOCOL + "//spaces.ru/diary/editaccess/?id="
