@@ -23,7 +23,11 @@
 				border-top-right-radius: unset;
 			}
 			.player {
-				width: 100%;
+				width: 81%;
+				margin-bottom: -1rem;
+			}
+			.list-group-item {
+				padding: 6px 6px;
 			}
 		</style>
 	</head>
@@ -70,7 +74,7 @@
 			});
 			$(function() {
 				$.each(data.sounds, function(index, item) {
-					$("#sounds_rel").append('<li class="list-group-item"><audio class="player" controls><source src="'+ item.url +'" type="'+ item.type +'"></li>')
+					$("#sounds_rel").append('<li class="list-group-item"><audio class="player" controls><source src="'+ item.url +'" type="'+ item.type +'"></li><button class="btn btn-primary ml-auto" style="padding: 0.375rem 0.75rem;">Скопировать</button>')
 				});
 				$("#sn-data").append(data.sounds.length);
 			});
