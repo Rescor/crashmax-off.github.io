@@ -29,6 +29,12 @@
 	}, {
 		"name": "10-years",
 		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/10-years.png"
+	}, {
+		"name": "15bg",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/15bg.png"
+	}, {
+		"name": "triangle",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/triangle.jpg"
 	}],
 	"sounds": [{
 		"name": "default",
