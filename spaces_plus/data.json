@@ -26,6 +26,9 @@
 	}, {
 		"name": "yellow-leaves",
 		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/yellow-leaves.jpg"
+	}, {
+		"name": "10_years",
+		"url": "https://crashmax-off.github.io/spaces_plus/src/backgrounds/10-years.png"
 	}],
 	"sounds": [{
 		"name": "default",
