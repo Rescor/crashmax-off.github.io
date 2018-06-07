@@ -2911,8 +2911,8 @@
                     href: _PROTOCOL + "//spaces.ru/lenta/?Link_id="
                 });
                 if (mail && lenta) {
-                    mail[0].parentNode.innerHTML = '<a href="'+_PROTOCOL+'"//spaces.ru/lenta" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_lenta"><span class="horiz-menu__link-event horiz-menu__link-event_show" id="lent_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
-                    lenta[0].parentNode.innerHTML = '<a href="'+_PROTOCOL+'"//spaces.ru/mail" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_mail"><span class="horiz-menu__link-event" id="mail_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
+                    mail[0].parentNode.innerHTML = '<a href="'+_PROTOCOL+'//spaces.ru/lenta" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_lenta"><span class="horiz-menu__link-event horiz-menu__link-event_show" id="lent_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
+                    lenta[0].parentNode.innerHTML = '<a href="'+_PROTOCOL+'//spaces.ru/mail" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_mail"><span class="horiz-menu__link-event" id="mail_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
                 }
             },
             redirectURL: function() {
