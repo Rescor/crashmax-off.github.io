@@ -65,6 +65,7 @@
             'ads': true,
             'myEvents': true,
             'friendsOn': true,
+            'fixes': true,
             'isOnline': false,
             'isOnlineInt': 1,
             'bodystyle': {
@@ -107,7 +108,8 @@
             'karma': "Собирать карму",
             'rurl': "Автоматический редирект внешних ссылок",
             'bodystyle': "Задать фон сайта",
-            'gifts': "Предпросмотр подарков"
+            'gifts': "Предпросмотр подарков",
+            'fixes': "Разные исправления"
         };
         var main = {
             ajax: function(url, method, data, callback, rstate) {
@@ -2901,6 +2903,18 @@
                     main.remove(adsblock[0].parentNode.parentNode);
                 }
             },
+            allFixes: function() {
+                var mail = main.find(document.links, {
+                    href: _PROTOCOL + "//spaces.ru/mail/?Link_id="
+                });
+                var lenta = main.find(document.links, {
+                    href: _PROTOCOL + "//spaces.ru/lenta/?Link_id="
+                });
+                if (mail && lenta) {
+                    mail[0].parentNode.innerHTML = '<a href="http://spaces.ru/lenta" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_lenta"><span class="horiz-menu__link-event horiz-menu__link-event_show" id="lent_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
+                    lenta[0].parentNode.innerHTML = '<a href="http://spaces.ru/mail" class="horiz-menu__link"><span class="horiz-menu__link-ico horiz-menu__link-ico_mail"><span class="horiz-menu__link-event" id="mail_notif_cnt" style="opacity: 1; display: none;"></span></span></a>';
+                }
+            },
             redirectURL: function() {
                 var backURL = main.getClassName('a.c-red');
                 var redirectURL = main.find(document.links, {
@@ -3116,6 +3130,7 @@
                 if (_SETTINGS.blogsd) main.blogsDelete();
                 if (_SETTINGS.readersd) main.readersDelete();
                 if (_SETTINGS.online) main.online();
+                if (_SETTINGS.fixes) main.allFixes();
                 if (_SETTINGS.ads) main.adsRemove();
                 if (_SETTINGS.favorite) main.favorite();
                 if (_SETTINGS.friendsOn) main.friendsOnline(1);
