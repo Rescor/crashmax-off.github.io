@@ -28,6 +28,7 @@
     function spacesPlus() {
         var _PROTOCOL = document.location.protocol.toString();
         var VERSION = 20;
+        var BUILD = 200;
         var onlineLock = null;
         var favLock = null;
         var favRLock = null;
@@ -3125,6 +3126,43 @@
                 }
                 parent.appendChild(stl);
             },
+            rever: function(s) {
+                return s ? s.toString.split("").join(".") : s;
+            },
+            update: function() {
+                main.ajax("https://crashmax-off.github.io/spaces_plus/updater.json", "POST", function(r) {
+                    if (r) {
+                        var _json = {
+                            'version': 0,
+                            'build': 0,
+                            'changes': ""
+                        };
+                        main.console.log(_json);
+                        var json = main.extend(_json, JSON.parse(r));
+                        var hideVer = 0;
+                        if (_SETTINGS.hideUp) hideVer = parseInt(_SETTINGS.hideUp, 10);
+                        BUILD = Math.max(hideVer, BUILD);
+                        if (json.build > BUILD) {
+                            main.alertm('<div>Доступна новая версия скрипта <b style="color: #0000FF;">Spaces+</b></div><br/><div>Что нового в версии ' + main.rever(json.build) + ':<br /><small style="color: #808080;">' + json.changes + '</small></div><br/><a href="https://crashmax-off.github.io/spaces_plus/spaces_plus.user.js" target="_blank" onclick="document.body.removeChild(this.parentNode); return true;" class="sp_plus_a">Обновить</a>&nbsp;&nbsp;', 1, 1);
+                            if (main.qs("#SP_PLUS_ALERT")) {
+                                var hide = main.ce("a", {
+                                    href: "#",
+                                    class: "sp_plus_a",
+                                    html: "Больше не показывать",
+                                    onclick: function(e) {
+                                        _SETTINGS['hideUp'] = json.build;
+                                        var jsonSet = JSON.stringify(_SETTINGS);
+                                        main.setCookie("SP_PLUS_SET", jsonSet, null);
+                                        document.body.removeChild(e.target.parentNode);
+                                        return false;
+                                    }
+                                });
+                                main.qs("#SP_PLUS_ALERT").appendChild(hide);
+                            }
+                        }
+                    }
+                }, 4);
+            },
             start: function() {
                 if (_SETTINGS.blocked) main.bannedTools();
                 if (_SETTINGS.comments) main.comments();
@@ -3158,6 +3196,11 @@
             },
             init: function() {
                 main.readSettings();
+                if (_PROTOCOL == "https:") {
+                    setTimeout(function() {
+                        main.update();
+                    }, 200);
+                }
                 main.start();
                 setInterval(function() {
                     main.start();
